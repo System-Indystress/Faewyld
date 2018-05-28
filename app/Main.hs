@@ -57,6 +57,7 @@ page = html $ do
 
       div ! id "panel" $ do
         div ! id "nav" $ do
+          img ! id "boards" ! src "boards.jpg"
           ul $ do
             li ! id "homeNav" $ "What's Happening"
             li ! id "eBoardNav" $ "eBoard"
