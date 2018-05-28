@@ -2,6 +2,9 @@
   font-family:MetaSerifPro;
   src: url("./font/MetaSerifPro-Book.otf")
 }
+body {
+  margin: 0;
+}
 #wrapper{
   height: 100%;
 }
@@ -70,20 +73,12 @@ background-color: #5E4B3C;
   margin-right:1%;
   float: right;
   display: inline-block
+  font-family: MetaSerifPro;
 }
 #filter{
   margin-top:0.1%;
   margin-left:1%;
   margin-right:1%;
-  height:90%;
-  width: 10%%;
-  float:right;
-  display:inline-block;
-  font-family:MetaSerifPro;
-}
-#searchBtn{
-  margin-top:0.1%;
-  margin-right: 1%;
   height:90%;
   width: 10%%;
   float:right;
@@ -151,4 +146,20 @@ background-color: #5E4B3C;
 .show {
   opacity: 1;
   width: 100%;
+}
+#footer #social {
+  padding-left: 20%;
+  padding-right: 20%;
+}
+#footer #social img{
+  height: 85%;
+  float: left;
+  padding-left: 1%;
+  padding-top: 0.4%;
+}
+#social p{
+  margin: 6px;
+  padding-left: 5%;
+  float: left;
+  font-family: MetaSerifPro;
 }

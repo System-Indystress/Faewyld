@@ -21,7 +21,7 @@ import Network.Wai
 import Network.Wai.Handler.Warp
 import Text.Blaze
 import Text.Blaze.Html
-import Text.Blaze.Html5.Attributes (id,src,rel,href,type_,value,for)
+import Text.Blaze.Html5.Attributes (id,src,rel,href,type_,value,for,placeholder)
 import Text.Blaze.Html5 hiding (main)
 import Prelude hiding (head, (!), id, div)
 import Control.Monad.IO.Class
@@ -47,8 +47,7 @@ page = html $ do
     div ! id "wrapper" $ do
       div ! id "header" $ do
         img ! id "profileBtn" ! src "profile.png"
-        button ! id "searchBtn" $ "Search"
-        input ! id "search"
+        input ! id "search" ! placeholder "Search"
         select ! id "filter" $ do
           option ! value "FAll"     $ "All Events + Info"
           option ! value "FEvents"  $ "All Events"
@@ -68,7 +67,13 @@ page = html $ do
           div ! id "modal" $ do
             div ! id "modalBackground" $ e
             img ! id "closeModal" ! src "close.png"
-      div ! id "footer" $ "Footer"
+      div ! id "footer" $ do
+        div ! id "social" $ do
+          p "Questions? Contact: gsc-secretary(at)tufts(dot)edu"
+          p "Connect With Us:"
+          a ! href "https://www.facebook.com/TuftsUniversityGSC/" $ img ! src "facebook-icon.png"
+          a ! href "https://twitter.com/TuftsGSC" $ img ! src "social-twitter-icon.png"
+          a ! href "https://www.instagram.com/tufts_ase_gsc/" $ img ! src "Instagram_app_icon.webp"
     script ! src "https://code.jquery.com/jquery-3.3.1.min.js" $ e
     script ! src "gsc.js" $ e
 
