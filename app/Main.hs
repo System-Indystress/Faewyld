@@ -42,41 +42,7 @@ page :: Markup
 page = html $ do
   head $ do
     title "Hello"
-  body $ do
-    link ! rel "stylesheet" ! href "gsc.css"
-    div ! id "wrapper" $ do
-      div ! id "header" $ do
-        img ! id "profileBtn" ! src "profile.png"
-        input ! id "search" ! placeholder "Search"
-        select ! id "filter" $ do
-          option ! value "FAll"     $ "All Events + Info"
-          option ! value "FEvents"  $ "All Events"
-          option ! value "FCurrent" $ "Upcoming Events Only"
-          option ! value "FInfo"    $ "Info Only"
-        h2 ! id "headerText" $ do "Tufts GSC"
-
-      div ! id "panel" $ do
-        div ! id "nav" $ do
-          img ! id "boards" ! src "boards.jpg"
-          ul $ do
-            li ! id "homeNav" $ "What's Happening"
-            li ! id "eBoardNav" $ "eBoard"
-            li ! id "committeeNav" $ "Committees"
-            li ! id "gsoNav" $ "Graduate Student Organizations"
-        div ! id "content" $ do
-          img ! id "gscLogo" ! src "GSC.png"
-          div ! id "modal" $ do
-            div ! id "modalBackground" $ e
-            img ! id "closeModal" ! src "close.png"
-      div ! id "footer" $ do
-        div ! id "social" $ do
-          p "Questions? Contact: gsc-secretary(at)tufts(dot)edu"
-          p "Connect With Us:"
-          a ! href "https://www.facebook.com/TuftsUniversityGSC/" $ img ! src "facebook-icon.png"
-          a ! href "https://twitter.com/TuftsGSC" $ img ! src "social-twitter-icon.png"
-          a ! href "https://www.instagram.com/tufts_ase_gsc/" $ img ! src "Instagram_app_icon.webp"
-    script ! src "https://code.jquery.com/jquery-3.3.1.min.js" $ e
-    script ! src "gsc.js" $ e
+  body $ "Hello"
 
 
 server :: Server Home
@@ -84,6 +50,7 @@ server = streamData :<|> (return page) :<|> (serveDirectoryFileServer "static") 
   where
     streamData :: MonadIO m => PendingConnection -> m ()
     streamData pc = do
+      liftIO $ putStrLn "conncting"
       c <- liftIO $ acceptRequest pc
       liftIO $ putStrLn "connected"
       liftIO $ forkPingThread c 10

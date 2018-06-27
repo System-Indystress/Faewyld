@@ -1,4 +1,4 @@
-name:                gsc
+name:                faewyld
 version:             0.1.0.0
 github:              "githubuser/gsc"
 license:             BSD3
@@ -37,12 +37,14 @@ dependencies:
 - servant-websockets
 - transformers
 - websockets
+- sqlite-simple
+- butter
 
 library:
   source-dirs: src
 
 executables:
-  gsc-exe:
+  faewyld:
     main:                Main.hs
     source-dirs:         app
     ghc-options:
@@ -50,7 +52,7 @@ executables:
     - -rtsopts
     - -with-rtsopts=-N
     dependencies:
-    - gsc
+    - faewyld
 
 tests:
   gsc-test:
@@ -61,4 +63,4 @@ tests:
     - -rtsopts
     - -with-rtsopts=-N
     dependencies:
-    - gsc
+    - faewyld
