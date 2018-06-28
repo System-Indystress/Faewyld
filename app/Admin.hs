@@ -7,7 +7,7 @@
 {-# LANGUAGE ScopedTypeVariables #-}
 {-# LANGUAGE TypeOperators #-}
 {-# LANGUAGE TypeFamilies #-}
-module Main where
+module Admin where
 
 import Servant
 import Servant.API
@@ -27,19 +27,35 @@ import Prelude hiding (head, (!), id, div)
 import Control.Monad.IO.Class
 import Control.Monad (forM_)
 import Control.Concurrent (threadDelay, forkIO)
+import Data.Aeson
 
--- other endpoints
-import Home
-import Admin
-
-type Game = Admin :<|> Home
-
-game :: Proxy Game
-game = Proxy
-
-app :: Application
-app = serve game $ adminServer :<|> homeServer 
+type Admin = "admin" :> Header "token" Text :> Get '[JSON] (Maybe AStatus)
 
 
-main :: IO ()
-main = run 8081 app
+data AStatus =
+  AStatus { players :: [Text]
+          , places  :: [Text]
+          , issues  :: [Text]
+          , msgs    :: [Text]
+          }
+  deriving (Show, Generic)
+
+instance FromJSON AStatus
+instance ToJSON AStatus
+
+adminStatus :: Maybe Text -> Maybe AStatus
+adminStatus token
+  | token == Just "placeholder" =
+    Just $
+      AStatus { players = ["matt"]
+              , places  = ["faewyld"]
+              , issues  = ["out of milk"]
+              , msgs    = ["free hugs"]}
+  | otherwise = Nothing
+
+
+adminServer :: Server Admin
+adminServer token = return $ adminStatus token
+
+admin :: Proxy Admin
+admin = Proxy

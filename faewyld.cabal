@@ -1,8 +1,8 @@
--- This file has been generated from package.yaml by hpack version 0.20.0.
+-- This file has been generated from package.yaml by hpack version 0.28.2.
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: fe9e14d24340a3760216879edce6615483fc7c369cea2a3e7f5e985adc122bfd
+-- hash: ec3d142a557f7cb4ee280b44331374a97695deb67a0ca308b99ddbbf00e3348c
 
 name:           faewyld
 version:        0.1.0.0
@@ -16,7 +16,6 @@ license:        BSD3
 license-file:   LICENSE
 build-type:     Simple
 cabal-version:  >= 1.10
-
 extra-source-files:
     ChangeLog.md
     README.md
@@ -33,19 +32,19 @@ library
     , base >=4.7 && <5
     , blaze-html
     , blaze-markup
-    , pads-haskell
+    , butter
+    , containers
     , servant
     , servant-blaze
     , servant-server
     , servant-websockets
-    , sqlite-simple
     , text
     , transformers
     , wai
     , warp
     , websockets
   exposed-modules:
-      Lib
+      FaeLib
   other-modules:
       Paths_faewyld
   default-language: Haskell2010
@@ -60,19 +59,21 @@ executable faewyld
     , base >=4.7 && <5
     , blaze-html
     , blaze-markup
+    , butter
+    , containers
     , faewyld
-    , pads-haskell
     , servant
     , servant-blaze
     , servant-server
     , servant-websockets
-    , sqlite-simple
     , text
     , transformers
     , wai
     , warp
     , websockets
   other-modules:
+      Admin
+      Home
       Paths_faewyld
   default-language: Haskell2010
 
@@ -87,13 +88,13 @@ test-suite gsc-test
     , base >=4.7 && <5
     , blaze-html
     , blaze-markup
+    , butter
+    , containers
     , faewyld
-    , pads-haskell
     , servant
     , servant-blaze
     , servant-server
     , servant-websockets
-    , sqlite-simple
     , text
     , transformers
     , wai

@@ -21,8 +21,6 @@ description:         Please see the README on GitHub at <https://github.com/gith
 
 dependencies:
 - base >= 4.7 && < 5
-# Plain text Database
-- pads-haskell
 # REST Web Server and utilities
 - servant
 - servant-server
@@ -37,7 +35,7 @@ dependencies:
 - servant-websockets
 - transformers
 - websockets
-- sqlite-simple
+- containers
 - butter
 
 library:

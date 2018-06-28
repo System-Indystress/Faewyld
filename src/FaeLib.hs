@@ -66,7 +66,7 @@ data Action = Attack | Defense
 type Vert = (Int,Int,Int)
 
 
-data Name = Name { owner :: Maybe Text, ident :: Text}
+data Name = Name { wrangler :: Maybe Text, ident :: Text}
   deriving (Show, Eq)
 
 data Recruit =
@@ -103,7 +103,8 @@ data Sidhe =
 data Job = Farmhand | Townfolk | Politician | Kindred
   deriving (Show,Eq)
 
-data Human = { who  :: Name
+data Human = Human
+             { who  :: Name
              , what :: Job
              }
   deriving (Show, Eq)
@@ -120,19 +121,18 @@ data Phase = Peace | Prep | Battle (City, Int) (City, Int) | Outcome City
 data Structure =
     Keep Vert | Wall Vert | Bulwark Vert | Scaffold Vert -- city structures
   | Tangle Element | Wash Element | Flow Element         -- magical structures
-  | Static Int | Fog Int | Drought Int |                 -- natural structures
+  | Static Int | Fog Int | Drought Int                   -- natural structures
   | Town Text | Villa | Camp                             -- human structures
   deriving (Show, Eq)
 
 data Place =
   Place { title      :: Text
-        , element    :: Element
         , owner      :: City
         , structures :: [(Structure, City, Vert)]
         , phase      :: Phase
         }
 
-  deriving (Show Eq)
+  deriving (Show, Eq)
 data Day  =  A | B | C | D | E | F | G | H
   deriving (Show, Eq)
 type Hour = Int -- 0 to 100
@@ -143,8 +143,7 @@ data Game =
   Game { players  :: Map Name (Status Ability)
        , recruits :: Map Name (Status Action)
        , sidhe    :: [Sidhe]
-       , fae      :: [Fae]
-       , phase    :: Phase
+       , wylde    :: [Fae]
        , place    :: Place
        , time     :: Time
        }
