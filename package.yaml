@@ -42,15 +42,27 @@ library:
   source-dirs: src
 
 executables:
-  faewyld:
+  faewyld-api:
     main:                Main.hs
-    source-dirs:         app
+    source-dirs:         api
     ghc-options:
     - -threaded
     - -rtsopts
     - -with-rtsopts=-N
     dependencies:
     - faewyld
+  faewyld-cli:
+    main:                Main.hs
+    source-dirs:         cli
+    ghc-options:
+      - -threaded
+      - -rtsopts
+      - -with-rtsopts=-N
+    dependencies:
+      - faewyld
+      - http-client
+      - http-client-tls
+      - bytestring
 
 tests:
   gsc-test:
